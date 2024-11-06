@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання</title>
+    <style>
+        /* Основні стилі */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .container.active {
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #343a40;
+        }
+        /* Стилі для сторінки таблиці */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #333;
+            padding: 20px;
+            text-align: center;
+        }
+        .header { background-color: #007bff; color: white; }
+        .sidebar { background-color: #ffc107; color: black; }
+        .main { background-color: #ffffff; color: black; }
+        .footer { background-color: #007bff; color: white; }
+
+        /* Стилі для сторінки форми */
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="date"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #495057;
+        }
+        /* Зображення */
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 5px;
+            background-color: #fff;
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.container');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+
+    <nav>
+        <a onclick="showSection('tableSection')">Таблиця</a> |
+        <a onclick="showSection('floatSection')">Плаваючі блоки</a> |
+        <a onclick="showSection('inlineSection')">Inline-блоки</a> |
+        <a onclick="showSection('imageSection')">Малюнок</a> |
+        <a onclick="showSection('formSection')">Форма</a>
+    </nav>
+
+    <!-- Секція таблиці -->
+    <div id="tableSection" class="container active">
+        <h1>Розмітка за допомогою таблиці</h1>
+        <table>
+            <tr>
+                <td class="header" colspan="2">Заголовок</td>
+            </tr>
+            <tr>
+                <td class="sidebar">Бічна панель</td>
+                <td class="main">Основний вміст</td>
+            </tr>
+            <tr>
+                <td class="footer" colspan="2">Футер</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Секція плаваючих блоків -->
+    <div id="floatSection" class="container">
+        <h1>Розмітка за допомогою плаваючих блоків</h1>
+        <div style="background-color: #007bff; color: white; padding: 20px; text-align: center;">Заголовок</div>
+        <div style="display: flex;">
+            <div style="width: 20%; background-color: #ffc107; padding: 20px;">Бічна панель</div>
+            <div style="width: 80%; background-color: #ffffff; padding: 20px;">Основний вміст</div>
+        </div>
+        <div style="background-color: #007bff; color: white; padding: 20px; text-align: center;">Футер</div>
+    </div>
+
+    <!-- Секція inline-блоків -->
+    <div id="inlineSection" class="container">
+        <h1>Розмітка за допомогою inline-блоків</h1>
+        <div style="text-align: center;">
+            <div style="display: inline-block; width: 100%; background-color: #007bff; color: white; padding: 20px;">Заголовок</div><br>
+            <div style="display: inline-block; width: 20%; background-color: #ffc107; padding: 20px;">Бічна панель</div>
+            <div style="display: inline-block; width: 75%; background-color: #ffffff; padding: 20px;">Основний вміст</div><br>
+            <div style="display: inline-block; width: 100%; background-color: #007bff; color: white; padding: 20px;">Футер</div>
+        </div>
+    </div>
+
+    <!-- Секція з малюнком -->
+    <div id="imageSection" class="container">
+        <h1>Зображення свічки</h1>
+        <img src="image.png" alt="Свічка">
+        <p>Це зображення свічки, яке було завантажене користувачем.</p>
+    </div>
+
+    <!-- Секція з формою -->
+    <div id="formSection" class="container">
+        <h1>Заповніть форму</h1>
+        <form action="#" method="post">
+            <label for="user_name">Прізвище, ім'я, по батькові *</label>
+            <input type="text" id="user_name" name="user_name" required>
+
+            <label for="user_email">E-mail</label>
+            <input type="email" id="user_email" name="user_email">
+
+            <label for="user_birthdate">Дата народження *</label>
+            <input type="date" id="user_birthdate" name="user_birthdate" required>
+
+            <label for="user_sex">Стать *</label>
+            <select id="user_sex" name="user_sex" required>
+                <option value="Чоловіча">Чоловіча</option>
+                <option value="Жіноча">Жіноча</option>
+            </select>
+
+            <input type="submit" value="Надіслати">
+        </form>
+    </div>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Завдання</title>
+    <style>
+        /* Основні стилі */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #343a40;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .container {
+            display: none;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .container.active {
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #343a40;
+        }
+        /* Стилі для сторінки таблиці */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #333;
+            padding: 20px;
+            text-align: center;
+        }
+        .header { background-color: #007bff; color: white; }
+        .sidebar { background-color: #ffc107; color: black; }
+        .main { background-color: #ffffff; color: black; }
+        .footer { background-color: #007bff; color: white; }
+
+        /* Стилі для сторінки форми */
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="email"], input[type="date"], select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #343a40;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #495057;
+        }
+        /* Зображення */
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 5px;
+            background-color: #fff;
+        }
+    </style>
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.container');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+
+    <nav>
+        <a onclick="showSection('tableSection')">Таблиця</a> |
+        <a onclick="showSection('floatSection')">Плаваючі блоки</a> |
+        <a onclick="showSection('inlineSection')">Inline-блоки</a> |
+        <a onclick="showSection('imageSection')">Малюнок</a> |
+        <a onclick="showSection('formSection')">Форма</a>
+    </nav>
+
+    <!-- Секція таблиці -->
+    <div id="tableSection" class="container active">
+        <h1>Розмітка за допомогою таблиці</h1>
+        <table>
+            <tr>
+                <td class="header" colspan="2">Заголовок</td>
+            </tr>
+            <tr>
+                <td class="sidebar">Бічна панель</td>
+                <td class="main">Основний вміст</td>
+            </tr>
+            <tr>
+                <td class="footer" colspan="2">Футер</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Секція плаваючих блоків -->
+    <div id="floatSection" class="container">
+        <h1>Розмітка за допомогою плаваючих блоків</h1>
+        <div style="background-color: #007bff; color: white; padding: 20px; text-align: center;">Заголовок</div>
+        <div style="display: flex;">
+            <div style="width: 20%; background-color: #ffc107; padding: 20px;">Бічна панель</div>
+            <div style="width: 80%; background-color: #ffffff; padding: 20px;">Основний вміст</div>
+        </div>
+        <div style="background-color: #007bff; color: white; padding: 20px; text-align: center;">Футер</div>
+    </div>
+
+    <!-- Секція inline-блоків -->
+    <div id="inlineSection" class="container">
+        <h1>Розмітка за допомогою inline-блоків</h1>
+        <div style="text-align: center;">
+            <div style="display: inline-block; width: 100%; background-color: #007bff; color: white; padding: 20px;">Заголовок</div><br>
+            <div style="display: inline-block; width: 20%; background-color: #ffc107; padding: 20px;">Бічна панель</div>
+            <div style="display: inline-block; width: 75%; background-color: #ffffff; padding: 20px;">Основний вміст</div><br>
+            <div style="display: inline-block; width: 100%; background-color: #007bff; color: white; padding: 20px;">Футер</div>
+        </div>
+    </div>
+
+    <!-- Секція з малюнком -->
+    <div id="imageSection" class="container">
+        <h1>Зображення свічки</h1>
+        <img src="image.png" alt="Свічка">
+        <p>Це зображення свічки, яке було завантажене користувачем.</p>
+    </div>
+
+    <!-- Секція з формою -->
+    <div id="formSection" class="container">
+        <h1>Заповніть форму</h1>
+        <form action="#" method="post">
+            <label for="user_name">Прізвище, ім'я, по батькові *</label>
+            <input type="text" id="user_name" name="user_name" required>
+
+            <label for="user_email">E-mail</label>
+            <input type="email" id="user_email" name="user_email">
+
+            <label for="user_birthdate">Дата народження *</label>
+            <input type="date" id="user_birthdate" name="user_birthdate" required>
+
+            <label for="user_sex">Стать *</label>
+            <select id="user_sex" name="user_sex" required>
+                <option value="Чоловіча">Чоловіча</option>
+                <option value="Жіноча">Жіноча</option>
+            </select>
+
+            <input type="submit" value="Надіслати">
+        </form>
+    </div>
+
+</body>
+</html>
